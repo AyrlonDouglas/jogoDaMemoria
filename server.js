@@ -11,7 +11,7 @@ app.set("view engine", "html");
 //     express: server
 // })
 app.get("/", function (req, res) {
-    var inicioHtml = ` <!DOCTYPE html>
+    let inicioHtml = ` <!DOCTYPE html>
                     <html lang="en">
                     
                     <head>
@@ -119,7 +119,6 @@ app.get("/game", function (req, res) {
                                 <button type="button">Reset</button>
                             </div>
                             <div class="tabela-jogo">`
-    // FUNCTION 
 
     func.embaralharArray(imagens);
 
@@ -130,12 +129,10 @@ app.get("/game", function (req, res) {
     func.criarArrayTransparencia((linhas * colunas), arrayFundo)
 
     let gameRender = func.montarTabela(linhas, colunas, gameHTML, imagensPraTabela);
-    console.log(gameRender)
 
     gameHTML += '</div></body></html>'
-        // console.log(req.query)
-        ,
-        res.send(gameRender)
+    // console.log(req.query)
+    res.send(gameRender)
 });
 
 app.get("/gaming", (req, res) => {
