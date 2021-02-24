@@ -93,7 +93,7 @@ app.get("/game", function (req, res) {
 
     // FUNCTION 
 
-    function embaralharCatalogo(arr) {
+    function embaralharArray(arr) {
         let random1, random2, aux
         for (let i = 0; i < arr.length; i++) {
             random1 = Math.floor(Math.random() * arr.length);
@@ -112,17 +112,17 @@ app.get("/game", function (req, res) {
         //console.log(imagensPraTabela)
     }
 
-    function embaralharImagensPraTabela(arr) {
-        let random1, random2, aux
-        for (let i = 0; i < arr.length; i++) {
-            random1 = Math.floor(Math.random() * arr.length);
-            random2 = Math.floor(Math.random() * arr.length);
-            aux = arr[random1];
-            arr[random1] = arr[random2];
-            arr[random2] = aux;
-        }
-        //console.log(imagensPraTabela)
-    }
+    // function embaralharImagensPraTabela(arr) {
+    //     let random1, random2, aux
+    //     for (let i = 0; i < arr.length; i++) {
+    //         random1 = Math.floor(Math.random() * arr.length);
+    //         random2 = Math.floor(Math.random() * arr.length);
+    //         aux = arr[random1];
+    //         arr[random1] = arr[random2];
+    //         arr[random2] = aux;
+    //     }
+    //     //console.log(imagensPraTabela)
+    // }
 
     function criarArrayTransparencia(numero) {
         for (let i = 0; i < numero; i++) {
@@ -175,9 +175,9 @@ app.get("/game", function (req, res) {
 
     function montarTabela(linhas, colunas) {
 
-        embaralharCatalogo(imagens);
+        embaralharArray(imagens);
         selecionarImagens((linhas * colunas) / 2);
-        embaralharImagensPraTabela(imagensPraTabela);
+        embaralharArray(imagensPraTabela);
         criarArrayTransparencia(linhas * colunas)
 
         gameHTML += '<table>';
