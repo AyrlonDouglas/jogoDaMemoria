@@ -107,3 +107,7 @@ main p a {
      height: 10rem;
      object-fit: contain;
  }
+ 
+ .hidden {
+     visibility: hidden;
+ }

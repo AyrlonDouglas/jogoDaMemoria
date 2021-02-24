@@ -5,11 +5,49 @@ const func = require('./functions')
 const app = express();
 const port = 9000;
 
-app.set("view engine", "html");
+let gameHTML;
+let arrayFundo;
+let imagensPraTabela;
+let imagens = [
+    {
+        'nome': 'css',
+        'url': 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png',
+        'used': 0,
+    },
+    {
+        'nome': 'javascript',
+        'url': 'https://3.bp.blogspot.com/-PshpioeGXa4/W9Madr31sWI/AAAAAAAAFTA/PHfIde8sr2sh3EG3WbLyZw3dIT6ipO8VgCLcBGAs/s1600/javascript.png',
+        'used': 0,
+    },
+    {
+        'nome': 'php',
+        'url': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1200px-PHP-logo.svg.png',
+        'used': 0,
+    },
+    {
+        'nome': 'node',
+        'url': 'https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/256/full/nodejslogo.png',
+        'used': 0,
+    },
+    {
+        'nome': 'c++',
+        'url': 'https://1.bp.blogspot.com/-RV-HrvfYVGg/XThtxkUd0JI/AAAAAAAAVuA/lbH0GXvHbVAS_QhWnB3Cr6C8Fr5Q795LwCLcBGAs/s1600/c%252B%252B.jpg',
+        'used': 0,
+    },
+    {
+        'nome': 'java',
+        'url': 'https://upload.wikimedia.org/wikipedia/pt/3/30/Java_programming_language_logo.svg',
+        'used': 0,
+    },
+    {
+        'nome': 'html',
+        'url': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1200px-HTML5_logo_and_wordmark.svg.png',
+        'used': 0,
+    }
+]
+let linhas = 2;
+let colunas = 4;
 
-// nunjucks.configure("views", {
-//     express: server
-// })
 app.get("/", function (req, res) {
     let inicioHtml = ` <!DOCTYPE html>
                     <html lang="en">
@@ -45,56 +83,19 @@ app.get("/", function (req, res) {
 });
 
 app.get("/game", function (req, res) {
-    let imagens = [
-        {
-            'nome': 'css',
-            'url': 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png',
-            'used': 0,
-        },
-        {
-            'nome': 'javascript',
-            'url': 'https://3.bp.blogspot.com/-PshpioeGXa4/W9Madr31sWI/AAAAAAAAFTA/PHfIde8sr2sh3EG3WbLyZw3dIT6ipO8VgCLcBGAs/s1600/javascript.png',
-            'used': 0,
-        },
-        {
-            'nome': 'php',
-            'url': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/1200px-PHP-logo.svg.png',
-            'used': 0,
-        },
-        {
-            'nome': 'node',
-            'url': 'https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/256/full/nodejslogo.png',
-            'used': 0,
-        },
-        {
-            'nome': 'c++',
-            'url': 'https://1.bp.blogspot.com/-RV-HrvfYVGg/XThtxkUd0JI/AAAAAAAAVuA/lbH0GXvHbVAS_QhWnB3Cr6C8Fr5Q795LwCLcBGAs/s1600/c%252B%252B.jpg',
-            'used': 0,
-        },
-        {
-            'nome': 'java',
-            'url': 'https://upload.wikimedia.org/wikipedia/pt/3/30/Java_programming_language_logo.svg',
-            'used': 0,
-        },
-        {
-            'nome': 'html',
-            'url': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1200px-HTML5_logo_and_wordmark.svg.png',
-            'used': 0,
-        }
-    ]
 
-    let imagensPraTabela = [];
+
+    imagensPraTabela = [];
 
     let imagemSelecionada = [];
 
-    let arrayFundo = [];
+    arrayFundo = [];
 
     let urlImagemTransparencia = 'https://i1.wp.com/www.deviante.com.br/wp-content/uploads/2018/11/HelloWorld.jpg?fit=1000%2C350'
 
-    let linhas = 2;
-    let colunas = 4;
 
-    let gameHTML = `<!DOCTYPE html>
+
+    gameHTML = `<!DOCTYPE html>
                         <html lang="en">
                         
                         <head>
@@ -128,15 +129,29 @@ app.get("/game", function (req, res) {
 
     func.criarArrayTransparencia((linhas * colunas), arrayFundo)
 
-    let gameRender = func.montarTabela(linhas, colunas, gameHTML, imagensPraTabela);
+    gameHTML = func.montarTabela(linhas, colunas, gameHTML, imagensPraTabela, arrayFundo);
 
-    gameHTML += '</div></body></html>'
+    gameHTML += '</div></body></html>';
     // console.log(req.query)
-    res.send(gameRender)
+    res.send(gameHTML)
 });
 
+
 app.get("/gaming", (req, res) => {
-    res.send('funfou')
+    // let query = req.query.index
+
+    // if (arrayFundo[req.query.index] == 0) {
+    //     arrayFundo[req.query.index] = 1;
+
+    // } else if (arrayFundo[req.query.index] == 1) {
+    //     arrayFundo[req.query.index] = 0;
+    // }
+
+
+
+    console.log(req.query)
+    console.log(arrayFundo)
+    res.send(gameHTML)
 })
 
 app.use(express.static('public'));
