@@ -133,9 +133,9 @@ app.get("/game", function (req, res) {
     console.log(gameRender)
 
     gameHTML += '</div></body></html>'
-    // console.log(req.query)
-
-    res.send(gameRender)
+        // console.log(req.query)
+        ,
+        res.send(gameRender)
 });
 
 app.get("/gaming", (req, res) => {
