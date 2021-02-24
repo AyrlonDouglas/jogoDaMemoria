@@ -1,4 +1,5 @@
 const express = require('express');
+const func = require('./functions')
 // const nunjucks = require('nunjucks');
 
 const app = express();
@@ -9,7 +10,6 @@ app.set("view engine", "html");
 // nunjucks.configure("views", {
 //     express: server
 // })
-
 app.get("/", function (req, res) {
     var inicioHtml = ` <!DOCTYPE html>
                     <html lang="en">
@@ -87,66 +87,13 @@ app.get("/game", function (req, res) {
 
     let imagemSelecionada = [];
 
-    let arrayTransparencia = [];
+    let arrayFundo = [];
 
     let urlImagemTransparencia = 'https://i1.wp.com/www.deviante.com.br/wp-content/uploads/2018/11/HelloWorld.jpg?fit=1000%2C350'
 
-    // FUNCTION 
+    let linhas = 2;
+    let colunas = 4;
 
-    function embaralharArray(arr) {
-        let random1, random2, aux
-        for (let i = 0; i < arr.length; i++) {
-            random1 = Math.floor(Math.random() * arr.length);
-            random2 = Math.floor(Math.random() * arr.length);
-            aux = arr[random1];
-            arr[random1] = arr[random2];
-            arr[random2] = aux;
-        }
-    }
-
-    function selecionarImagens(numero) {
-        for (let i = 0; i < numero; i++) {
-            imagensPraTabela.push(imagens[i]);
-            imagensPraTabela.push(imagens[i]);
-        }
-        //console.log(imagensPraTabela)
-    }
-
-    // function embaralharImagensPraTabela(arr) {
-    //     let random1, random2, aux
-    //     for (let i = 0; i < arr.length; i++) {
-    //         random1 = Math.floor(Math.random() * arr.length);
-    //         random2 = Math.floor(Math.random() * arr.length);
-    //         aux = arr[random1];
-    //         arr[random1] = arr[random2];
-    //         arr[random2] = aux;
-    //     }
-    //     //console.log(imagensPraTabela)
-    // }
-
-    function criarArrayTransparencia(numero) {
-        for (let i = 0; i < numero; i++) {
-            arrayTransparencia.push(0);
-        }
-        console.log(arrayTransparencia)
-    }
-
-
-    // function UrlImageSelecionada() {
-    //     let numberRandom = Math.floor(Math.random() * imagensPraTabela.length);
-
-    //     if (imagensPraTabela[numberRandom].used < 2) {
-
-    //         imagensPraTabela[numberRandom].used++
-
-    //         return imagensPraTabela[numberRandom].url
-
-    //     } else if (imagensPraTabela[numberRandom].used >= 2) {
-    //         console.log('retornou')
-    //         return UrlImageSelecionada()
-    //     }
-    // }
-    // render
     let gameHTML = `<!DOCTYPE html>
                         <html lang="en">
                         
@@ -172,52 +119,31 @@ app.get("/game", function (req, res) {
                                 <button type="button">Reset</button>
                             </div>
                             <div class="tabela-jogo">`
+    // FUNCTION 
 
-    function montarTabela(linhas, colunas) {
+    func.embaralharArray(imagens);
 
-        embaralharArray(imagens);
-        selecionarImagens((linhas * colunas) / 2);
-        embaralharArray(imagensPraTabela);
-        criarArrayTransparencia(linhas * colunas)
+    func.selecionarImagens(((linhas * colunas) / 2), imagens, imagensPraTabela);
 
-        gameHTML += '<table>';
-        let indexImagensTabela = 0;
+    func.embaralharArray(imagensPraTabela);
 
-        for (let i = 0; i < linhas; i++) {
-            gameHTML += '<tr>';
+    func.criarArrayTransparencia((linhas * colunas), arrayFundo)
 
-            for (let j = 0; j < colunas; j++) {
-                // console.log('chamando')
-
-                // let randomImage = UrlImageSelecionada();
-                // gameHTML += `<td style="background-image:url(${randomImage})"></td>`;
-                // gameHTML += `<td>
-                //                 <img src="${randomImage}">
-                //             </td>`; ${imagensPraTabela[indexImagensTabela]['url']}
-                if (req.query['index']) {
-
-                }
-                gameHTML += `<td>
-                                <a href='/game?index=${indexImagensTabela}'><img src="${imagensPraTabela[indexImagensTabela]['url']}"></a>
-                             </td>`
-
-                indexImagensTabela++
-
-            }
-            gameHTML += '</tr>'
-        }
-        gameHTML += '</table>'
-    }
-    montarTabela(2, 4);
+    let gameRender = func.montarTabela(linhas, colunas, gameHTML, imagensPraTabela);
+    console.log(gameRender)
 
     gameHTML += '</div></body></html>'
-    console.log(req.query)
+    // console.log(req.query)
 
-    res.send(gameHTML)
+    res.send(gameRender)
 });
+
+app.get("/gaming", (req, res) => {
+    res.send('funfou')
+})
 
 app.use(express.static('public'));
 
 app.listen(port, function () {
     console.log('Server is running in port: ' + port);
-})
+}) 
