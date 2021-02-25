@@ -30,7 +30,7 @@ header ul {
     font-size:2rem;
     margin-top: 0.5rem;
 }
-header li:first-child {
+header li {
     margin-right: 2rem;
 }
 header li a {   
@@ -86,7 +86,7 @@ main p a {
  }
 
  td {
-     background: oldlace;
+    background: oldlace;
     border: 1px solid black;
     /*padding: 1rem; */
     border-radius: 1rem;
@@ -98,16 +98,37 @@ main p a {
 
  }
  table {
-     margin: 2rem auto;
-     border-spacing: 1rem;
- }
+    margin: 2rem auto;
+    border-spacing: 1rem;
+}
  img {
-     padding: 0.3rem;
-     width:10rem;
-     height: 10rem;
-     object-fit: contain;
+    padding: 0.3rem;
+    width:10rem;
+    height: 10rem;
+    object-fit: contain;
  }
- 
- .hidden {
-     visibility: hidden;
+ .authors {
+     font-size: 2rem;
+     font-weight: 700;
+     text-align: center;
+     color: #fff;
+     text-shadow: black 1px 1px 3px;
  }
+
+.level {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 700;
+    width:30rem;
+    margin: 0.7rem auto;
+    
+}
+.level a {
+    color: white;
+}
+.levelEasy {
+    background-image: linear-gradient(to right, #10d320 0%, #38ea41  51%, #10d33a  100%)
+}
+.levelAverage {
+    background-image: linear-gradient(to right, #d3d010 0%, #eade38  51%, #d3d010  100%)
+}
