@@ -11,7 +11,7 @@
 body {
     background-image: linear-gradient( 109.6deg,  rgba(62,161,219,1) 11.2%, rgba(93,52,236,1) 100.2% );
     font-size:16px;
-    height: 100%;
+    height: 100vh;
     width: 100%;
 }
 header {
@@ -98,7 +98,7 @@ main p a {
 
  }
  table {
-    margin: 2rem auto;
+    margin: 1rem auto;
     border-spacing: 1rem;
 }
  img {
@@ -108,20 +108,22 @@ main p a {
     object-fit: contain;
  }
  .authors {
-     font-size: 2rem;
-     font-weight: 700;
-     text-align: center;
-     color: #fff;
-     text-shadow: black 1px 1px 3px;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    text-shadow: black 1px 1px 3px;
  }
-
+ ul .level {
+     margin-top:30px;
+ }
 .level {
     color: #fff;
     font-size: 3rem;
     font-weight: 700;
     width:30rem;
-    margin: 0.7rem auto;
-    
+    margin: 0.7rem auto;    
+    text-shadow: 2px 2px 5px black;
 }
 .level a {
     color: white;
@@ -131,4 +133,82 @@ main p a {
 }
 .levelAverage {
     background-image: linear-gradient(to right, #d3d010 0%, #eade38  51%, #d3d010  100%)
+}
+form {
+    box-shadow: 1px 1px 10px black;
+    text-shadow: 1px 1px 3px black;
+    color: white;
+    font-size: 2rem;
+    margin: 4rem auto;
+    text-align: center;
+    width : 20rem;
+    background-color: #045191;
+    border-radius: 0.7rem;
+}
+fieldset {
+    font-weight: 700;
+    border-style: none;
+}
+label {
+    font-weight: 700;
+    margin: 0 auto;
+    font-size: 1.5rem;
+}
+input {
+    margin: 0 auto;
+    width: 17rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    border-radius: 10px;
+}
+.label {
+    width: 95%;
+    margin: 0.5rem auto;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+.button-submit{
+    color:white;
+    width: 10rem;
+    cursor: pointer;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background-color: rgb(3, 42, 65);
+}
+.button-submit:hover {
+    color:black;
+    transition: 0.5s;
+    background-color: greenyellow;
+}
+.pontuacao{
+    margin-top:10px;
+    text-align: center;
+    color:white;
+}
+.turno{
+    text-align: center;
+    color:white;
+}
+.underline {
+    text-decoration: underline black;
+}
+.victory {
+    margin-top: 3rem;
+    text-align: center;
+}
+.victory h2 {
+    font-size: 2rem;
+    color:#fff;
+    margin: 2rem;
+}
+.victory p {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    width:30rem;
+    margin: 0 auto;
+}
+.victory p a {
+    text-decoration: none;
+    color: #fff;
 }

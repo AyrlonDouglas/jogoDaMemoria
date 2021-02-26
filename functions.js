@@ -30,26 +30,14 @@ module.exports = {
 
     // render
 
-    montarTabela: function montarTabela(linhas, colunas, html, imagensPraTabela, arrayFundo, query) {
+    montarTabela: function montarTabela(linhas, colunas, html, imagensPraTabela, arrayFundo, fundoCarta, query) {
         let gameHTML = html;
         let indexImagensTabela = 0;
-        let planoFundo = "https://i0.wp.com/www.multarte.com.br/wp-content/uploads/2019/01/free-flyers-background-png.png?resize=696%2C696&ssl=1"
-
-        for (let i = 0; i < arrayFundo.length; i++) {
-            for (let j = 0; j < arrayFundo.length; j++) {
-                if (arrayFundo[i] == 1 && arrayFundo[j] == 1 && i != j) {
-                    if (imagensPraTabela[i]['nome'] == imagensPraTabela[j]['nome']) {
-                        arrayFundo[i] = 2;
-                        arrayFundo[j] = 2
-                    }
-                }
-            }
-        }
+        let planoFundo = fundoCarta;
 
         gameHTML += '<div class="tabela-jogo"><table>';
 
         for (let i = 0; i < linhas; i++) {
-
             gameHTML += '<tr>';
 
             for (let j = 0; j < colunas; j++) {
@@ -80,7 +68,6 @@ module.exports = {
         let count1 = 0;
         let zerado = false;
 
-
         for (let i = 0; i < array.length; i++) {
             if (array[i] == 1) {
                 count1++;
@@ -96,15 +83,28 @@ module.exports = {
             }
         } return zerado
     },
+
     vencedor: function vencedor(arr) {
-        let venceu = true;
+        let diferentesDe2 = 0;
         for (let i = 0; i < arr.length; i++) {
             if (arr[i] != 2) {
-                venceu = false;
+                diferentesDe2++;
             }
         }
-        if (venceu) {
-            console.log('VENCEU')
+        return diferentesDe2 != 0 ? false : true
+    },
+
+    verificarCartasIguais: function verificarCartasIguais(arrayFundo, imagensPraTabela) {
+        for (let i = 0; i < arrayFundo.length; i++) {
+            for (let j = 0; j < arrayFundo.length; j++) {
+                if (arrayFundo[i] == 1 && arrayFundo[j] == 1 && i != j) {
+                    if (imagensPraTabela[i]['nome'] == imagensPraTabela[j]['nome']) {
+                        arrayFundo[i] = 2;
+                        arrayFundo[j] = 2
+                    }
+                }
+            }
         }
     }
+
 }
