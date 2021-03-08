@@ -88,7 +88,6 @@ let layoutBase = `<!DOCTYPE html>
                             <nav>
                                 <ul>
                                     <li><a href="/">Start</a></li>
-                                    <li><a href="#">Help</a></li>
                                     <li><a href="/authors">Authors</a></li>
                                 </ul>
                             </nav>
@@ -111,10 +110,9 @@ app.get("/authors", (req, res) => {
     let html = layoutBase;
     html += `<ul class="authors">
                 <li>Ayrlon Vilarim</li>
-                <li>Gustavo Cesar</li>
-                <li>Flávio Cesar</li>
+                <li>Gustavo Jose</li>
+                <li>Flavio Cesar</li>
                 <li>Henrique R.</li>
-                <li>Herica Suassuna</li>
              </ul>
         </body></html>
     `
