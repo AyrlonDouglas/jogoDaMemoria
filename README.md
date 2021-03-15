@@ -1,7 +1,7 @@
 "# jogoDaMemoria" 
 
-É necessário: 
- - Instalação do node.js : https://nodejs.org/en/ ,
+Para acessar é necessário: 
+ - Instalação do node.js : https://nodejs.org/en/
  - Fazer o download do projeto :
     - Caso você tem instalado o git : git clone https://github.com/AyrlonDouglas/jogoDaMemoria.git 
     - Ou baixe diretamente pelo link : https://github.com/AyrlonDouglas/jogoDaMemoria/archive/main.zip
