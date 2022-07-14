@@ -1,6 +1,8 @@
-"# jogoDaMemoria" 
+# jogoDaMemoria
 
-Para acessar é necessário: 
+Demo: https://memory-game-ayrlon.herokuapp.com/
+
+Para rodar no pc é necessário: 
  - Instalação do node.js : https://nodejs.org/en/
  - Fazer o download do projeto :
     - Caso você tem instalado o git : git clone https://github.com/AyrlonDouglas/jogoDaMemoria.git 
