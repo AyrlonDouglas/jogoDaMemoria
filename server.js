@@ -308,6 +308,6 @@ app.get("/victory", (req, res) => {
 
 app.use(express.static("public"));
 
-app.listen(port, function () {
+app.listen(process.env.PORT || port, function () {
   console.log("Server is running in port: " + port);
 });
